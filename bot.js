@@ -1,3 +1,4 @@
+const { Member } = require('discord.io');
 var Discord = require('discord.io');
 var logger = require('winston');
 var auth = require('./auth.json');
@@ -12,10 +13,23 @@ var bot = new Discord.Client({
    token: auth.token,
    autorun: true
 });
+
 bot.on('ready', function (evt) {
     logger.info('Connected');
     logger.info('Logged in as: ');
     logger.info(bot.username + ' - (' + bot.id + ')');
+});
+bot.on('guildMemberAdd', (newMember) => {
+	var general = '896718405250469912';
+	// console.log(newMember);
+	logger.info(`New Member ${newMember.username} - (${newMember.id})`);
+	msg = `Welcome <@${newMember.id}>!`;
+	bot.sendMessage({
+		to: general,
+		message:msg
+	});
+	// member.guild.general.sendMessage("Welcome!");
+	// logger.info('new member');
 });
 bot.on('message', function (user, userID, channelID, message, evt) {
     // Our bot needs to know if it will execute a command
@@ -50,6 +64,11 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					message: msg
 				});
             	break;
+			// case 'kick':
+			// 	if (user.hasPermission("KICK_MEMBERS") {
+
+			// 	}
+				// break;
 			break ;
             // Just add any case commands if you want to..
          }
