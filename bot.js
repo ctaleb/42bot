@@ -16,5 +16,5 @@ bot.on('messageCreate', handleMessage);
 
 function handleMessage(msg) {
 	console.log(msg.content);
-	commandHandler.handleCommand(msg);
+	commandHandler;
 }
