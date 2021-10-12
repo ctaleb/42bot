@@ -4,7 +4,7 @@ const bot = new Discord.Client({
     intents: [Discord.Intents.FLAGS.GUILDS, Discord.Intents.FLAGS.GUILD_MESSAGES]
 });
 const auth = require('./auth.json');
-const commandHandler = require('./commands/CommandHandler')
+const commandHandler = require('./commands/handler')
 
 bot.login(auth.token);
 
@@ -15,6 +15,7 @@ bot.once('ready', () => {
 bot.on('messageCreate', handleMessage);
 
 function handleMessage(msg) {
-	console.log(msg.content);
+	if (!msg.author.bot)
+		console.log(`[Chat] ${msg.content}`);
 	commandHandler.handleCommand(msg);
 }
