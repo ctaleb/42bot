@@ -1,6 +1,6 @@
 var google = require('google');
 
-google.resultsPerPage = 1;
+google.resultsPerPage = 25;
 
 const execute = function(msg, to_find) {
     msg.channel.send(`Searching for [${to_find}]...`);
