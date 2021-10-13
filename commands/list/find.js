@@ -6,7 +6,7 @@ const execute = function(msg, to_find) {
     msg.channel.send(`Searching for [${to_find}]...`);
 	to_find += ' site:myanimelist.net'
 	console.log(to_find);
-	var json = serpwow.json(
+	serpwow.json(
 		{
 		  q: to_find,
 		  num: 1,
@@ -15,12 +15,12 @@ const execute = function(msg, to_find) {
 		.then(result => {
 		  // pretty-print the result
 		  console.log(JSON.stringify(result, 0, 2));
+		  console.log(result.organic_results[0].link);
 		})
 		.catch(error => {
 		  // print the error
 		  console.log(error);
 		});
-	console.log(json.link);
 }
 
 module.exports = {
