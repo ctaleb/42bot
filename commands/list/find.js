@@ -9,7 +9,8 @@ const execute = async function(msg, to_find) {
 		safe: false, // hide explicit results?
 	}
 	const response = await google.search(to_find, options);
-  	console.log(response);
+	console.log(response);
+  	console.log(response.results[0].url);
 }
 
 module.exports = {
