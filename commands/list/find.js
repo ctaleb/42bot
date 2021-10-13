@@ -8,6 +8,7 @@ const execute = function(msg, to_find) {
 	console.log(to_find);
 	google(to_find , function (err, res){
 		var link = res.links[0];
+		console.log(res.links.length);
 		console.log(link);
 	})
 }
