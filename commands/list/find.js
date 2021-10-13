@@ -10,7 +10,8 @@ const execute = async function(msg, to_find) {
 	}
 	const response = await google.search(to_find, options);
 	console.log(response);
-  	console.log(response.results[0].url);
+	msg.channel.send(response.results[0].url);
+	
 }
 
 module.exports = {
