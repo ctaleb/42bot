@@ -9,6 +9,7 @@ const execute = function(msg, to_find) {
 	var json = serpwow.json(
 		{
 		  q: to_find,
+		  num: 1,
 		  location: 'New York,New York,United States'
 		})
 		.then(result => {
