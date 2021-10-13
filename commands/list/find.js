@@ -1,17 +1,25 @@
-var google = require('google');
+const SerpWow = require('google-search-results-serpwow');
 
-google.resultsPerPage = 25;
+let serpwow = new SerpWow('CCA26AADDB2E492B8EA601FDF04E9E43');
 
 const execute = function(msg, to_find) {
     msg.channel.send(`Searching for [${to_find}]...`);
-	//to_find += ' site:myanimelist.net'
+	to_find += ' site:myanimelist.net'
 	console.log(to_find);
-	google(to_find , function (err, res){
-		if (err) console.error(err)
-		var link = res.links[0];
-		console.log(res.links.length);
-		console.log(link);
-	})
+	var json = serpwow.json(
+		{
+		  q: to_find,
+		  location: 'New York,New York,United States'
+		})
+		.then(result => {
+		  // pretty-print the result
+		  console.log(JSON.stringify(result, 0, 2));
+		})
+		.catch(error => {
+		  // print the error
+		  console.log(error);
+		});
+	console.log(json.link);
 }
 
 module.exports = {
