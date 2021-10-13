@@ -10,7 +10,7 @@ const execute = function(msg, to_find) {
 		{
 		  q: to_find,
 		  num: 1,
-		  location: 'New York,New York,United States'
+		  location: 'Paris,France'
 		})
 		.then(result => {
 		  // pretty-print the result
