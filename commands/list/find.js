@@ -9,8 +9,11 @@ const execute = async function(msg, to_find) {
 		safe: false, // hide explicit results?
 	}
 	const response = await google.search(to_find, options);
-	console.log(response);
-	msg.channel.send(response.results[0].url);
+	//console.log(response);
+	if (response.results.length == 0)
+		msg.channel.send('❌ No results found. ❌');
+	else
+		msg.channel.send(response.results[0].url);
 	
 }
 
